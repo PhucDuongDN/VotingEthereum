@@ -1,0 +1,99 @@
+pragma solidity ^0.4.23;
+pragma experimental ABIEncoderV2;
+
+contract Voting {
+  
+    mapping (bytes32 => uint) public votesReceived;
+
+    struct Voter {
+        bool voted;  // if true, that person already voted
+        address delegate; // person delegated to
+        bytes32 vote;   // index of the voted proposal
+    }
+
+    mapping(address => Voter) public voters;
+    
+    //bytes32[] public candidateList;
+    
+    struct Proposal {
+        bytes32 candidateName;   // short name (up to 32 bytes)
+        uint voteCount; // number of accumulated votes
+        address[] listAddressVoter;
+    }
+    Proposal[] public proposals;
+
+    address public address_created;
+   
+    function Voting (bytes32[] candidateNames, address contractAt, bytes32 titleCont_byte32) public payable{
+        //candidateList = candidateNames;
+        address[] memory temp ;
+        for (uint i = 0; i < candidateNames.length; i++) {
+            proposals.push(Proposal({
+                candidateName: candidateNames[i],
+                voteCount: 0,
+                listAddressVoter: temp 
+            }));
+        }
+        address_created = address(this);
+        
+        if (!contractAt.call(bytes4(keccak256("AddContract(address,bytes32)")), address_created, titleCont_byte32)) {
+            throw;
+        }
+    }
+
+    function totalVotesFor(bytes32 candidate) view  public returns (uint) {
+        require(validCandidate(candidate));
+        return votesReceived[candidate];
+    }
+ 
+    function voteForCandidate(bytes32 candidate) public {
+        require(validCandidate(candidate));
+        
+        Voter storage sender = voters[msg.sender];
+        require(!sender.voted, "Already voted.");
+        
+        sender.voted = true;
+        sender.vote = candidate;
+        sender.delegate = msg.sender;
+        votesReceived[candidate] += 1;
+        
+        for(uint i = 0; i < proposals.length; i++) {
+            if (proposals[i].candidateName == candidate) {
+                 proposals[i].voteCount += 1;
+                  proposals[i].listAddressVoter.push(msg.sender);
+            }
+        }
+    }
+  
+    function validCandidate(bytes32 candidate) view public returns (bool) {
+        for(uint i = 0; i < proposals.length; i++) {
+            if (proposals[i].candidateName== candidate) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    function CountCandidate() view public returns(uint){
+        return proposals.length;
+    }
+    
+    //function TotalVote() view public returns (uint){
+    //    uint totalVote = 0;
+    //    for(uint i = 0; i < candidateList.length; i++) {
+    //        totalVote += votesReceived[candidateList[i]];
+    //    }
+    //    return totalVote;
+    //}
+    
+    function CheckCandidate(uint candidateID) view public returns(uint ,bytes32, uint, address[]){
+       
+        return (candidateID, proposals[candidateID].candidateName, proposals[candidateID].voteCount, proposals[candidateID].listAddressVoter);
+    }
+    
+    function CheckVoter() view  public returns (bool) {
+        Voter storage sender = voters[msg.sender];
+        require(sender.voted, "Already voted.");
+        return true;
+    }
+}

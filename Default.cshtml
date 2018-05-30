@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Home Page";
+}
+@section create {
+    <section id="create">
+        <div id="not_login_metamask" style="display:none;">
+            <text style="font-style:oblique;">
+                You is not logged in to MetaMask
+            </text>
+        </div>
+        <div id="login_metamask" style="display:none;">
+            <button type="button" onclick='window.location = "Create";' class="d-button d-pollCreationShortcutButton d-large d-primaryButton">
+                <div class="d-buttonContainer">
+                    <div class="d-buttonContent">
+                        <div class="d-textContainer">
+                            <div class="d-text">Create A New Vote</div>
+                        </div>
+                    </div>
+                    <div class="d-buttonState"></div>
+                </div>
+            </button>
+        </div>
+    </section>
+}
+
+<ol class="round">
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Page Heading -->
+        <h1 class="my-4">
+            Page Heading
+            <small>Secondary Text</small>
+        </h1>
+        <div class="row">
+            @*<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Project One</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>*@
+           
+        </div>
+        
+        <!-- /.row -->
+        <!-- Pagination -->
+        @*<ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>*@
+    </div>
+    <!-- /.container -->
+</ol>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Scripts/Default.js"></script>

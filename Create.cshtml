@@ -1,0 +1,153 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Home Page";
+}
+@section create {
+    <section id="create">
+        <div id="not_login_metamask" style="display:none;">
+            <text style="font-style:oblique;">
+                You is not logged in to MetaMask
+            </text>
+        </div>
+        <div id="login_metamask" style="display:none;">
+            <button type="button" id="build_SC" class="d-button d-pollCreationShortcutButton d-large d-primaryButton">
+                <div class="d-buttonContainer">
+                    <div class="d-buttonContent">
+                        <div class="d-textContainer">
+                            <div class="d-text">Create A New Vote</div>
+                        </div>
+                    </div>
+                    <div class="d-buttonState"></div>
+                </div>
+            </button>
+        </div>
+    </section>
+}
+
+    <section class="d-pagesContainer d-floatingPage">
+
+        <div id="d-wizardGeneralInformationPage" class="d-activePage">
+            <div class="d-pageBorder">
+                <div class="d-pageShadow">
+                    <div class="d-pageContent">
+                        <section id="d-wizardGeneralInformationView" class="">
+                            <div class="d-wizardStep" style="background-color: white;">
+                                <div class="d-form">
+                                    <div class="d-formField d-large d-withIcon d-withLabel">
+                                        <div class="d-fieldContainer">
+                                            <div class="d-iconContainer">
+
+                                            </div>
+
+                                            <div class="d-inputContainer">
+
+                                                <input type="text" value="" id="d-pollTitle" onchange="CheckFieldInput();" placeholder="Enter title" required="required" maxlength="64">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-formField d-withIcon d-withLabel d-isMultiline">
+                                        <div class="d-fieldContainer">
+                                            <div class="d-iconContainer">
+
+                                            </div>
+
+                                            <div class="d-inputContainer">
+
+                                                <input type="text" value="" id="d-pollOption1" onchange="CheckFieldInput()" placeholder="Add Option 1" required="required" maxlength="64">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-formField d-withIcon d-withLabel d-isMultiline">
+                                        <div class="d-fieldContainer">
+                                            <div class="d-iconContainer">
+
+                                            </div>
+
+                                            <div class="d-inputContainer">
+
+                                                <input type="text" value="" id="d-pollOption2" onchange="CheckFieldInput()" placeholder="Add Option 2" required="required" maxlength="64">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-formField d-withIcon d-withLabel d-isMultiline">
+                                        <div class="d-fieldContainer">
+                                            <div class="d-iconContainer">
+
+                                            </div>
+
+                                            <div class="d-inputContainer">
+
+                                                <input type="text" value="" id="d-pollOption3" onchange="CheckFieldInput()" placeholder="Add Option 3" required="required" maxlength="64">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    @*<div class="d-formField d-withIcon d-withLabel d-isMultiline">
+                <div class="d-fieldContainer" style="height: 100px;">
+                    <div class="d-iconContainer">
+
+                    </div>
+
+                    <div class="d-inputContainer">
+                        <textarea id="d-pollDescription" rows="1" placeholder="Add description" maxlength="3000" style="overflow: hidden; word-wrap: break-word; height: 60px; min-height: 32px !important;"></textarea>
+                    </div>
+                </div>
+
+            </div>*@
+
+                                </div>
+                                <input type="hidden" id="countOption" value="3" />
+                                <button class="btn d-active" style="margin-left: 35px;margin-top: 10px;border-radius: 15px;" id="AddMoreOption">Add More Option</button>
+                            </div>
+                        </section>
+                        @*<section id="d-wizardGeneralInformationNavigationView" class="d-actionBarView d-bottomNavigationView d-stickyState">
+                            <div class="d-stickyContainer" style="left: 538.5px; right: 538.5px;">
+                                <div class="d-stickyElement">
+                                    <div class="d-grow"></div>
+                                    <div class="d-actionButtons">
+                                        <button type="button" disabled="" class="d-button d-nextButton d-send d-large d-primaryButton">
+                                            <div class="d-buttonContainer">
+                                                <div class="d-buttonContent">
+                                                    <div class="d-textContainer">
+                                                        <div class="d-text">Continue</div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-buttonState">
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <style>
+            .loader {
+                border: 16px solid #f3f3f3; /* Light grey */
+                border-top: 16px solid #3498db; /* Blue */
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+                animation: spin 2s linear infinite;
+            }
+        </style>
+        <div class="loader" style="display:none;margin-left:45%;text-align: center;">
+            <p style="margin-top: 30%;">Creating contract</p>
+        </div>
+        
+    </section>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Scripts/Create.js"></script>
+<script src="~/libs/web3.js"></script>

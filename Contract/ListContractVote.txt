@@ -1,0 +1,35 @@
+pragma solidity ^0.4.23;
+
+contract ListContractVote {
+    
+    uint256 id = 0; 
+  
+    struct MyContract {
+        uint idCont;
+        bytes32 titleCont;  
+        //bytes descCont;   
+    }
+  
+    mapping(address => MyContract) public allContracts;
+    
+    address[] public contractAccts;
+   
+   function AddContract(address _address, bytes32 _titleCont) public {
+        id++;
+        MyContract storage myContract = allContracts[_address];
+        myContract.idCont = id;
+        myContract.titleCont = _titleCont;
+        //myContract.descCont = _descCont;
+        
+        contractAccts.push(_address) -1;
+    }
+  
+    function getContracts() view public returns(address[]) {
+        return contractAccts;
+    }
+  
+    function getMyContract(address _address) view public returns (uint, address, bytes32) {
+        return ( allContracts[_address].idCont, _address, allContracts[_address].titleCont);
+     
+    }
+}
