@@ -22,7 +22,7 @@
     });
 
     var listcontractvoteContract = web3.eth.contract([{ "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "contractAccts", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }], "name": "allContracts", "outputs": [{ "name": "idCont", "type": "uint256" }, { "name": "titleCont", "type": "bytes32" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "_address", "type": "address" }], "name": "getMyContract", "outputs": [{ "name": "", "type": "uint256" }, { "name": "", "type": "address" }, { "name": "", "type": "bytes32" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "getContracts", "outputs": [{ "name": "", "type": "address[]" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_address", "type": "address" }, { "name": "_titleCont", "type": "bytes32" }], "name": "AddContract", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }]);
-    contractInstance = listcontractvoteContract.at('0xf849ccfea6772cfa2bbf510acee1f164e9b76743');
+    contractInstance = listcontractvoteContract.at('0x619522b9d1167a507e811a9f8718fab868aff7c9');
     init();
     
     //console.log(list_address);
